@@ -4,8 +4,14 @@ import time
 import json
 
 
-
 vec = pygame.math.Vector2
+
+def write_json() :
+
+	data = json.dumps(save)
+
+	with open('save.json', 'w') as s :
+		s.write(data)
 
 
 class Mode :
@@ -24,9 +30,11 @@ class Mode :
 
 		if self.mode_1_rect.collidepoint(mouse) :
 			save["GAME"]["PLAYER_MODE"] = 1
+			write_json()
 
 		elif self.mode_2_rect.collidepoint(mouse) :
 			save["GAME"]["PLAYER_MODE"] = 2
+			write_json()
 
 	def draw_screen (self) :
 
