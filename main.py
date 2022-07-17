@@ -1,4 +1,5 @@
 from resources import *
+from modes import *
 import threading
 
 vec = pygame.math.Vector2
@@ -183,13 +184,18 @@ class Main :
 				if event.type == pygame.QUIT :
 					self.running = False
 					self.press_to_start = False
+					pygame.quit()
 
 				elif event.type == pygame.MOUSEBUTTONDOWN :
 					self.check_mouse(event.pos)
 
 	def check_mouse(self, mouse) :
-		if self.scree_rect.collidepoint(mouse) :
+		if self.screen_rect.collidepoint(mouse) :
+			self.running = False
 			self.press_to_start = False
+			time.sleep(5)
+			modes = Mode()
+			modes.choose_mode()
 
 	def play_music(self) :
 

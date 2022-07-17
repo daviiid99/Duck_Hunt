@@ -16,6 +16,10 @@ WHITE = (255,255,255)
 RED = (93.3,13.3,16.1)
 
 TITLE_FONT = pygame.font.SysFont('comicsans', 50)
+SUBTITLE_FONT = pygame.font.SysFont('comicsans', 40)
+MEDIUM_FONT = pygame.font.SysFont('comicsans', 35)
+SMALL_FONT = pygame.font.SysFont('comicsans', 25)
+
 
 ## Game Values
 FPS = 60
@@ -26,6 +30,10 @@ clock = pygame.time.Clock()
 small_font = pygame.font.Font(None, 30)
 count_font = pygame.font.Font(None, 50)
 mini_font = pygame.font.Font(None, 18)
+
+# Player values
+my_save_slot = open("save.json")
+save = json.load(my_save_slot)
 
 
 ## App Info
@@ -124,3 +132,17 @@ brown_shoot = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/
 # Sound effect
 title = pygame.mixer.Sound("assets/music/title.mp3")
 gotcha = pygame.mixer.Sound("assets/music/gotcha.mp3")
+
+
+# Modes windows
+modes_bg = pygame.transform.scale(pygame.image.load(os.path.join('Assets/modes', "background.png")), (858, 540))
+mode_1 = pygame.transform.scale(pygame.image.load(os.path.join('Assets/modes', "1_duck.png")), (300, 300))
+mode_2 = pygame.transform.scale(pygame.image.load(os.path.join('Assets/modes', "2_duck.png")), (300, 300))
+black_bg = pygame.transform.scale(pygame.image.load(os.path.join('Assets/modes', "black.png")), (300, 300))
+
+# Dialog
+dialog = pygame.transform.scale(pygame.image.load(os.path.join('Assets/dialog', "dialog.png")), (328, 138))
+
+
+# Board
+board_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background.png")), (858, 540)) 
