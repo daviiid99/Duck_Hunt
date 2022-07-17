@@ -78,9 +78,8 @@ class Mode :
 			for event in pygame.event.get() :
 
 				if event.type == pygame.QUIT :
-					self.choosing_mode = False
 					self.running = False
-					pygame.quit()
+					self.choosing_mode = False
 
 				elif event.type == pygame.MOUSEBUTTONDOWN :
 					self.check_mouse(event.pos)
@@ -99,6 +98,7 @@ class Mode :
 		start = self.screen_controller()
 
 		# Wait for all threads to end
-		thread_1.join()
-		thread_2.join()
+		while self.choosing_mode :
+			thread_1.join()
+			thread_2.join()
 
