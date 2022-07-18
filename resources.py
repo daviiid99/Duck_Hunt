@@ -133,9 +133,11 @@ brown_shoot = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/
 
 
 # Sound effect
-title = pygame.mixer.Sound("assets/music/title.mp3")
+title = pygame.mixer.Sound("assets/music/title.ogg")
+intro = pygame.mixer.Sound("assets/music/intro.ogg")
 gotcha = pygame.mixer.Sound("assets/music/gotcha.mp3")
 dog_bark = pygame.mixer.Sound("assets/music/dog_bark.mp3")
+gun_shot = pygame.mixer.Sound("assets/music/gun_shot.ogg")
 
 
 # Modes windows
@@ -172,3 +174,6 @@ all_shots =  pygame.transform.scale(pygame.image.load(os.path.join('assets/dialo
 two_shots =  pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/shots', "two_shots.png")), (52, 34))
 one_shot =  pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/shots', "one_shot.png")), (52, 34))
 zero_shot =  pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/shots', "zero_shot.png")), (52, 34))
+
+# Cursor
+cursor =  pygame.transform.scale(pygame.image.load(os.path.join('assets/cursor', "cursor.png")), (52, 34))

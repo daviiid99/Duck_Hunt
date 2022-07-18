@@ -95,6 +95,8 @@ class Mode :
 
 	def choose_mode(self) :
 
+		intro.play()
+
 		# Create new threads
 		thread_1 = threading.Thread(target = self.draw_screen, name="screen")
 		thread_2 = threading.Thread(target = self.screen_controller, name="mouse")

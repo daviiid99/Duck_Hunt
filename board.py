@@ -4,6 +4,7 @@ import json
 import time
 import random
 
+
 class Board :
 
 	def __init__(self) :
@@ -11,6 +12,7 @@ class Board :
 		self.running = True
 		self.clock = pygame.time.Clock()
 		self.screen = WIN
+		self.screen_rect = self.screen.get_rect()
 		self.playing = True
 		self.duck_x = 0
 		self.duck_y = 0
@@ -80,14 +82,21 @@ class Board :
 				round_text = SUBTITLE_FONT.render(str(self.current_round), 1, WHITE)
 				self.screen.blit(round_text, (410, 100))
 
+			# Game based mouse
+			pygame.mouse.set_visible(False)
+			self.screen.blit(cursor, ( pygame.mouse.get_pos() ))
 
 			pygame.display.update()
 
 
 	def check_ducks_impact(self, mouse) :
 
-		if self.duck_rect.collidepoint(mouse) :
-			print("ay")
+		if self.screen_rect.collidepoint(mouse) :
+			gun_shot.play()
+
+
+	#def flying_ducks (self) :
+
 
 
 

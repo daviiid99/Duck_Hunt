@@ -240,16 +240,7 @@ class Main :
 
 	def play_music(self) :
 
-		count = 16
-
-		while self.press_to_start :
-
-			if count == 0 :
-				title.play()
-				count = 16
-
-			else :
-				count -=1
+		title.play()
 
 
 	def start_title_screen(self) :
