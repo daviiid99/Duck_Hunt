@@ -14,11 +14,13 @@ WIN = pygame.display.set_mode((width, height))
 BLACK = (0,0,0)
 WHITE = (255,255,255)
 RED = (93.3,13.3,16.1)
+YELLOW = "#83d313"
 
 TITLE_FONT = pygame.font.SysFont('comicsans', 50)
 SUBTITLE_FONT = pygame.font.SysFont('comicsans', 40)
 MEDIUM_FONT = pygame.font.SysFont('comicsans', 35)
 SMALL_FONT = pygame.font.SysFont('comicsans', 25)
+SMALLEST_FONT = pygame.font.SysFont('comicsans', 20)
 
 
 ## Game Values
@@ -60,6 +62,7 @@ walking_6 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/do
 # Jump
 jump_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/dog/jump', 'jump_1.png')), (150, 150))
 jump_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/dog/jump', 'jump_2.png')), (150, 150))
+jump_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/dog/jump', 'jump_3.png')), (150, 150))
 
 # Ducks
 
@@ -132,6 +135,7 @@ brown_shoot = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/
 # Sound effect
 title = pygame.mixer.Sound("assets/music/title.mp3")
 gotcha = pygame.mixer.Sound("assets/music/gotcha.mp3")
+dog_bark = pygame.mixer.Sound("assets/music/dog_bark.mp3")
 
 
 # Modes windows
@@ -143,6 +147,28 @@ black_bg = pygame.transform.scale(pygame.image.load(os.path.join('Assets/modes',
 # Dialog
 dialog = pygame.transform.scale(pygame.image.load(os.path.join('Assets/dialog', "dialog.png")), (328, 138))
 
+# Round
+round = pygame.transform.scale(pygame.image.load(os.path.join('Assets/dialog', "round.png")), (328, 138))
+
 
 # Board
 board_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background.png")), (858, 540)) 
+
+# Hits
+hit_zero = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_zero.png")), (315, 35))
+hit_one = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_one.png")), (315, 35))
+hit_two = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_two.png")), (315, 35))
+hit_three = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_three.png")), (315, 35))
+hit_four = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_four.png")), (315, 35))
+hit_five = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_five.png")), (315, 35))
+hit_six = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_six.png")), (315, 35))
+hit_seven = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_seven.png")), (315, 35))
+hit_eight = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_eight.png")), (315, 35))
+hit_nine = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_nine.png")), (315, 35))
+hit_ten =  pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_ten.png")), (315, 35))
+
+# Shots
+all_shots =  pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/shots', "all_shots.png")), (52, 34))
+two_shots =  pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/shots', "two_shots.png")), (52, 34))
+one_shot =  pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/shots', "one_shot.png")), (52, 34))
+zero_shot =  pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/shots', "zero_shot.png")), (52, 34))

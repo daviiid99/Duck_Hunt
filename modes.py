@@ -1,4 +1,5 @@
 from resources import *
+from board import *
 import threading
 import time
 import json
@@ -30,11 +31,17 @@ class Mode :
 
 		if self.mode_1_rect.collidepoint(mouse) :
 			save["GAME"]["PLAYER_MODE"] = 1
+			self.choosing_mode = False
 			write_json()
+			board = Board()
+			board.start_game()
 
 		elif self.mode_2_rect.collidepoint(mouse) :
 			save["GAME"]["PLAYER_MODE"] = 2
+			self.choosing_mode = False
 			write_json()
+			board = Board()
+			board.start_game()
 
 	def draw_screen (self) :
 
@@ -80,6 +87,7 @@ class Mode :
 				if event.type == pygame.QUIT :
 					self.running = False
 					self.choosing_mode = False
+					pygame.quit()
 
 				elif event.type == pygame.MOUSEBUTTONDOWN :
 					self.check_mouse(event.pos)

@@ -24,8 +24,9 @@ class Main :
 
 		while self.press_to_start :
 
-			movement_x = 50
-			movement_y = 250
+			dog_x = 50
+			duck_x = dog_x
+			duck_y = 250
 			dog_jump = 400
 			count = 0
 
@@ -35,9 +36,10 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(walking_1, blue_horizontal_1, movement_x, movement_y, dog_jump)
+					self.draw(walking_1, blue_horizontal_1, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(10)
-					movement_x += 10
+					dog_x += 10
+					duck_x = dog_x + 50
 					count +=1
 
 			count = self.count
@@ -46,9 +48,10 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(walking_2, blue_horizontal_1, movement_x, movement_y, dog_jump)
+					self.draw(walking_2, blue_horizontal_1, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(10)
-					movement_x += 10
+					dog_x += 10
+					duck_x = dog_x + 55
 					count +=1
 
 			count = self.count
@@ -57,9 +60,10 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(walking_3, blue_horizontal_3, movement_x, movement_y, dog_jump)
+					self.draw(walking_3, blue_horizontal_3, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(10)
-					movement_x += 10
+					dog_x += 10
+					duck_x = dog_x + 60
 					count +=1
 
 			count = self.count
@@ -68,9 +72,10 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(walking_4, blue_horizontal_3, movement_x, movement_y, dog_jump)
+					self.draw(walking_4, blue_horizontal_3, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(10)
-					movement_x += 10
+					dog_x += 10
+					duck_x = dog_x + 65
 					count +=1
 
 			count = self.count
@@ -79,9 +84,10 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(walking_5, blue_horizontal_1, movement_x, movement_y, dog_jump)
+					self.draw(walking_5, blue_horizontal_1, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(10)
-					movement_x += 10
+					dog_x += 10
+					duck_x = dog_x + 70
 					count +=1
 
 			count = self.count
@@ -90,9 +96,10 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(walking_6, blue_horizontal_2, movement_x, movement_y, dog_jump)
+					self.draw(walking_6, blue_horizontal_2, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(10)
-					movement_x += 0
+					dog_x += 0
+					duck_x = dog_x + 75
 					count +=1
 
 			count = self.count
@@ -101,9 +108,10 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(walking_6, blue_horizontal_2, movement_x, movement_y, dog_jump)
+					self.draw(walking_6, blue_horizontal_2, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(10)
-					movement_x += 0
+					dog_x += 0
+					duck_x = dog_x + 80
 					count +=1
 
 			count = self.count
@@ -112,10 +120,11 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(jump_1, blue_up_1, movement_x, movement_y, dog_jump)
+					self.draw(jump_1, blue_up_1, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(10)
-					movement_x += 10
-					movement_y -= 10
+					dog_x += 10
+					duck_x = dog_x + 85
+					duck_y -= 10
 					dog_jump  -= 10
 					count +=1
 
@@ -125,10 +134,11 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(jump_1, blue_up_2, movement_x, movement_y, dog_jump)
+					self.draw(jump_1, blue_up_2, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(10)
-					movement_x += 10
-					movement_y -= 10
+					dog_x += 10
+					duck_x = dog_x + 90
+					duck_y -= 10
 					dog_jump  -= 10
 					count +=1
 
@@ -138,10 +148,11 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(jump_1, blue_up_1, movement_x, movement_y, dog_jump)
+					self.draw(jump_1, blue_up_1, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(30)
-					movement_x += 10
-					movement_y -= 10
+					dog_x += 10
+					duck_x = dog_x + 95
+					duck_y -= 10
 					dog_jump  -= 10
 					count +=1
 
@@ -151,10 +162,11 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(jump_1, blue_up_2, movement_x, movement_y, dog_jump)
+					self.draw(jump_1, blue_up_2, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(30)
-					movement_x += 10
-					movement_y -= 10
+					dog_x += 10
+					duck_x = dog_x + 100
+					duck_y -= 10
 					dog_jump  -= 10
 					count +=1
 
@@ -164,10 +176,11 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(jump_2, blue_up_2, movement_x, movement_y, dog_jump)
+					self.draw(jump_2, blue_up_2, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(30)
-					movement_x += 10
-					movement_y -= 10
+					dog_x += 10
+					duck_x = dog_x + 105
+					duck_y -= 10
 					dog_jump += 20
 					count +=1
 
@@ -177,15 +190,16 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(jump_2, blue_up_2, movement_x, movement_y, dog_jump)
+					self.draw(jump_2, blue_up_2, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(30)
-					movement_x += 10
-					movement_y -= 10
+					dog_x += 10
+					duck_x = dog_x + 110
+					duck_y -= 10
 					dog_jump += 20
 					count +=1
 
 		
-	def draw(self, dog, duck, movement_x, movement_y, dog_jump) :
+	def draw(self, dog, duck, dog_x, duck_x, duck_y, dog_jump) :
 		# Set background
 		self.screen.blit(title_screen_bg, (0,0))
 
@@ -194,10 +208,10 @@ class Main :
 		self.screen.blit(text, (270, 300))
 
 		# Draw dog
-		self.screen.blit(dog, (movement_x, dog_jump))
+		self.screen.blit(dog, (dog_x, dog_jump))
 
 		# Draw duck
-		self.screen.blit(duck, (movement_x, movement_y))
+		self.screen.blit(duck, (duck_x, duck_y))
 
 		pygame.display.update()
 
@@ -210,6 +224,7 @@ class Main :
 				if event.type == pygame.QUIT :
 					self.running = False
 					self.press_to_start = False
+					pygame.quit()
 					
 
 				elif event.type == pygame.MOUSEBUTTONDOWN :
@@ -257,7 +272,6 @@ class Main :
 			thread_2.join()
 			thread_3.join()
 
-		pygame.quit()
 
 
 
