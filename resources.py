@@ -69,67 +69,67 @@ jump_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/dog/j
 # Blue
 
 # Horizontal
-blue_horizontal_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/horizontal', 'horizontal.png')), (120, 120))
-blue_horizontal_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/horizontal', 'horizontal_2.png')), (120, 120))
-blue_horizontal_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/horizontal', 'horizontal_3.png')), (120, 120))
+blue_horizontal_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/horizontal', 'horizontal.png')), (80, 80))
+blue_horizontal_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/horizontal', 'horizontal_2.png')), (80, 80))
+blue_horizontal_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/horizontal', 'horizontal_3.png')), (80, 80))
 
 # Up
-blue_up_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/up', 'up.png')), (120, 120))
-blue_up_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/up', 'up_2.png')), (120, 120))
-blue_up_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/up', 'up_3.png')), (120, 120))
+blue_up_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/up', 'up.png')), (80, 80))
+blue_up_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/up', 'up_2.png')), (80, 80))
+blue_up_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/up', 'up_3.png')), (80, 80))
 
 # Fall
-blue_falling_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/falling', 'fall.png')), (120, 120))
-blue_falling_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/falling', 'fall_2.png')), (120, 120))
-blue_falling_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/falling', 'fall_3.png')), (120, 120))
-blue_falling_4 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/falling', 'fall_4.png')), (120, 120))
+blue_falling_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/falling', 'fall.png')), (80, 80))
+blue_falling_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/falling', 'fall_2.png')), (80, 80))
+blue_falling_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/falling', 'fall_3.png')), (80, 80))
+blue_falling_4 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/falling', 'fall_4.png')), (80, 80))
 
 # Shoot
-blue_shoot = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/shoot', 'shoot.png')), (120, 120))
+blue_shoot = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/blue/shoot', 'shoot.png')), (80, 80))
 
 
 # Green
 
 # Horizontal
-green_horizontal_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/horizontal', 'horizontal.png')), (120, 120))
-green_horizontal_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/horizontal', 'horizontal_2.png')), (120, 120))
-green_horizontal_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/horizontal', 'horizontal_3.png')), (120, 120))
+green_horizontal_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/horizontal', 'horizontal.png')), (80, 80))
+green_horizontal_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/horizontal', 'horizontal_2.png')), (80, 80))
+green_horizontal_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/horizontal', 'horizontal_3.png')), (80, 80))
 
 # Up
-green_up_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/up', 'up.png')), (120, 120))
-green_up_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/up', 'up_2.png')), (120, 120))
-green_up_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/up', 'up_3.png')), (120, 120))
+green_up_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/up', 'up.png')), (80, 80))
+green_up_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/up', 'up_2.png')), (80, 80))
+green_up_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/up', 'up_3.png')), (80, 80))
 
 # Fall
-green_falling_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/falling', 'fall.png')), (120, 120))
-green_falling_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/falling', 'fall_2.png')), (120, 120))
-green_falling_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/falling', 'fall_3.png')), (120, 120))
-green_falling_4 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/falling', 'fall_4.png')), (120, 120))
+green_falling_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/falling', 'fall.png')), (80, 80))
+green_falling_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/falling', 'fall_2.png')), (80, 80))
+green_falling_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/falling', 'fall_3.png')), (80, 80))
+green_falling_4 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/falling', 'fall_4.png')), (80, 80))
 
 # Shoot
-green_shoot = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/shoot', 'shoot.png')), (120, 120))
+green_shoot = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/green/shoot', 'shoot.png')), (80, 80))
 
 
 # Brown
 
 # Horizontal
-brown_horizontal_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/horizontal', 'horizontal.png')), (120, 120))
-brown_horizontal_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/horizontal', 'horizontal_2.png')), (120, 120))
-brown_horizontal_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/horizontal', 'horizontal_3.png')), (120, 120))
+brown_horizontal_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/horizontal', 'horizontal.png')), (80, 80))
+brown_horizontal_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/horizontal', 'horizontal_2.png')), (80, 80))
+brown_horizontal_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/horizontal', 'horizontal_3.png')), (80, 80))
 
 # Up
-brown_up_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/up', 'up.png')), (120, 120))
-brown_up_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/up', 'up_2.png')), (120, 120))
-brown_up_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/up', 'up_3.png')), (120, 120))
+brown_up_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/up', 'up.png')), (80, 80))
+brown_up_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/up', 'up_2.png')), (80, 80))
+brown_up_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/up', 'up_3.png')), (80, 80))
 
 # Fall
-brown_falling_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/falling', 'fall.png')), (120, 120))
-brown_falling_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/falling', 'fall_2.png')), (120, 120))
-brown_falling_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/falling', 'fall_3.png')), (120, 120))
-brown_falling_4 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/falling', 'fall_4.png')), (120, 120))
+brown_falling_1 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/falling', 'fall.png')), (80, 80))
+brown_falling_2 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/falling', 'fall_2.png')), (80, 80))
+brown_falling_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/falling', 'fall_3.png')), (80, 80))
+brown_falling_4 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/falling', 'fall_4.png')), (80, 80))
 
 # Shoot
-brown_shoot = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/shoot', 'shoot.png')), (120, 120))
+brown_shoot = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/duck/brown/shoot', 'shoot.png')), (80, 80))
 
 
 # Sound effect
@@ -138,6 +138,7 @@ intro = pygame.mixer.Sound("assets/music/intro.ogg")
 gotcha = pygame.mixer.Sound("assets/music/gotcha.mp3")
 dog_bark = pygame.mixer.Sound("assets/music/dog_bark.mp3")
 gun_shot = pygame.mixer.Sound("assets/music/gun_shot.ogg")
+falling = pygame.mixer.Sound("assets/music/falling.ogg")
 
 
 # Modes windows
@@ -155,10 +156,10 @@ round = pygame.transform.scale(pygame.image.load(os.path.join('Assets/dialog', "
 
 # Board
 board_day_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background_day.png")), (858, 540)) 
-board_day_blood_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background_day.png")), (858, 540)) 
+board_day_blood_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background_day_blood.png")), (858, 540)) 
 
 board_night_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background_night.png")), (858, 540)) 
-board_night_blood_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background_night.png")), (858, 540)) 
+board_night_blood_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background_night_blood.png")), (858, 540)) 
 
 # Hits
 hit_zero = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_zero.png")), (315, 35))
