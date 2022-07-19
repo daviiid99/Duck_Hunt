@@ -66,6 +66,12 @@ jump_3 = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/dog/j
 
 # Ducks
 
+one_duck = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/dog/duck', 'one_duck.png')), (150, 150))
+two_ducks = pygame.transform.scale(pygame.image.load(os.path.join('assets/npc/dog/duck', 'two_ducks.png')), (150, 150)) 
+
+
+# Ducks
+
 # Blue
 
 # Horizontal
@@ -139,6 +145,8 @@ gotcha = pygame.mixer.Sound("assets/music/gotcha.mp3")
 dog_bark = pygame.mixer.Sound("assets/music/dog_bark.mp3")
 gun_shot = pygame.mixer.Sound("assets/music/gun_shot.ogg")
 falling = pygame.mixer.Sound("assets/music/falling.ogg")
+lands = pygame.mixer.Sound("assets/music/lands.ogg")
+show = pygame.mixer.Sound("assets/music/show.ogg")
 
 
 # Modes windows

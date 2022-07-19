@@ -36,7 +36,7 @@ class Board :
 
 
 		self.current_round = 1
-		self.ducks_available = ["blue", "green", "brown"]
+		self.ducks_available = ["blue", "blue", "blue"]
 
 		self.current_score = 000000
 
@@ -51,10 +51,15 @@ class Board :
 		self.isFlying = False
 		self.location = 0
 		self.isFalling = False
+		self.is_free = False
 
 		self.brown_duck_falling = [brown_falling_1, brown_falling_2, brown_falling_3, brown_falling_4]
 		self.blue_duck_falling = [blue_falling_1, blue_falling_2, blue_falling_3, blue_falling_4]
 		self.green_duck_falling = [green_falling_1, green_falling_2, green_falling_3, green_falling_4]
+
+		self.blue_duck_flying = [blue_up_1, blue_up_2, blue_up_3]
+
+		self.eureka = False
 
 
 	def draw_board(self) :
@@ -118,6 +123,10 @@ class Board :
 			if self.isFlying :
 				self.screen.blit(self.current_duck_img, (self.duck_rect.x, self.duck_rect.y))
 
+			# Draw capture
+			if self.eureka :
+				self.screen.blit(one_duck, (self.duck_rect.x , self.duck_rect.y))
+
 			# Game based mouse
 			pygame.mouse.set_visible(False)
 			self.screen.blit(cursor, ( pygame.mouse.get_pos() ))
@@ -130,13 +139,26 @@ class Board :
 
 		if self.shots > 0 :
 			self.shots -=1
+			self.current_shots_img = self.remaining_shots_img[self.shots]
 
 			if self.shots == 0 :
-				if self.current_round < 10 :
-					self.shots = 3
+				if self.current_round < self.game_ducks :
 					self.current_round +=1
+					self.refresh_remaining_shots()
 
-			self.current_shots_img = self.remaining_shots_img[self.shots]
+
+	def refresh_remaining_ducks(self) :
+
+		# Just Increasing the variable doesn't seem to work properly
+		self.shot_ducks +=1
+		self.current_hits_img = self.hits_img_list[self.shot_ducks] 
+
+
+	def refresh_remaining_shots(self) :
+
+		# Just Increasing the variable doesn't seem to work properly
+		self.shots = 3
+		self.current_shots_img = self.remaining_shots_img[self.shots]
 
 
 	def check_ducks_impact(self, mouse) :
@@ -147,6 +169,32 @@ class Board :
 
 		if self.duck_rect.collidepoint(mouse) :
 			self.isFalling = True
+			self.shot_duck_update()
+
+
+	def shot_duck_update(self) :
+
+		# Increase player score
+		self.increase_counter()
+
+		# Update remaining ducks
+		self.refresh_remaining_ducks()
+
+		# Remove current duck from the total
+		self.remove_duck()
+
+
+	def increase_counter(self) :
+		# Counter will increase dependant of the duck color
+
+		if self.current_duck_color == "blue" :
+			self.current_score +=1000
+
+		elif self.current_duck_color == "green" :
+			self.current_score += 1500
+
+		elif self.current_duck_color == "brown" :
+			self.current_score += 1500
 
 
 	def random_duck_location (self) :
@@ -156,10 +204,7 @@ class Board :
 
 	def generate_duck(self) :
 
-
-		print(2)
-
-		if not self.isFlying and not self.dog_animation :
+		if not self.isFlying :
 
 			# Generate a randon duck color
 			choose_duck = random.choice(self.ducks_available)
@@ -178,40 +223,71 @@ class Board :
 			elif choose_duck == "brown" :
 				self.current_duck_img = brown_up_1
 
-
 			# Generate random initial location
 			self.location = self.random_duck_location()
 
 			# Show current duck on display
 			self.isFlying = True
 
-
-
 	def shot_animation(self) :
 
 		if self.current_duck_color == "blue" :
 			self.current_duck_img = blue_shoot
 
+		elif self.current_duck_color == "green" :
+			self.current_duck_img = green_shoot
+
+		elif self.current_duck_color == "brown" :
+			self.current_duck_img = brown_shoot
+
+	def remove_duck(self) :
+
+		# Remove a duck from the total
+		if self.is_free :
+			self.game_ducks -=1
+
+		self.is_free = False
 
 	def duck_movement(self) :
 
 		if self.isFlying :
 
 			# Normal movement
-			if self.shots == 3 :	
-				self.duck_rect.x = self.location
-				self.duck_rect.y -=5
-				self.clock.tick(15)
+			self.duck_rect.x = self.location
+			self.duck_rect.y = 300
 
-			elif self.shots == 2 and not self.isFalling:
-				self.duck_rect.x += 5
-				self.clock.tick(15)
+			if self.shots > 0   :	
+				while self.duck_rect.y > 0 and not self.isFalling :
+					for duck in self.blue_duck_flying :
+						self.current_duck_img = duck
+						self.duck_rect.y -= 5
+						self.clock.tick(20)
+
+				if self.isFalling :
+					self.shot_animation()
+					clock.tick(5)
+					self.falling_animation()
+					self.eureka_time()
+					self.refresh_remaining_shots()
+
+			if self.shots == 0 and not self.isFalling:
+				while self.duck_rect.y > -100 :
+					for duck in self.blue_duck_flying :
+						self.current_duck_img = duck
+						self.duck_rect.y -= 15
+						self.clock.tick(60)
 
 
-			elif self.shots == 0 or self.shots == 1 or self.shots == 2 and self.isFalling :
-				self.shot_animation()
-				clock.tick(5)
-				self.falling_animation()
+	def eureka_time(self) :
+		self.eureka = True
+		show.play()
+		count = 0
+
+		while count < 5 :
+			self.clock.tick(5)
+			count +=1
+
+		self.eureka = False
 
 	def draw_fall(self) :
 
@@ -222,9 +298,6 @@ class Board :
 					self.duck_rect.y += 5
 					self.clock.tick(30)
 
-			self.isFlying = False
-			falling.stop()
-
 
 		elif self.current_duck_color == "green" :
 			while self.duck_rect.y < 300 :
@@ -232,9 +305,6 @@ class Board :
 					self.current_duck_img = duck
 					self.duck_rect.y += 5
 					self.clock.tick(30)
-
-			self.isFlying = False
-			falling.stop()
 
 
 		elif self.current_duck_color == "brown" :
@@ -244,20 +314,22 @@ class Board :
 					self.duck_rect.y += 5
 					self.clock.tick(30)
 
-			self.isFlying = False
-			falling.stop()
-
 
 	def falling_animation(self) :
 
 		falling.play()
 		self.draw_fall()
+		lands.play()
+		self.isFlying = False
+		self.isFalling = False
+		falling.stop()
 	
 	def flying_ducks (self) :
 
 		while self.playing :
-			self.generate_duck()
-			self.duck_movement()
+			if not self.dog_animation :
+				self.generate_duck()
+				self.duck_movement()
 
 
 	def board_controller(self) :
