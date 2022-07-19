@@ -1,9 +1,10 @@
 from resources import *
 import threading
 import json
-import time
 import random
-
+import time
+from datetime import date
+from datetime import datetime
 
 class Board :
 
@@ -47,7 +48,15 @@ class Board :
 		while self.playing : 
 
 			# Draw background
-			self.screen.blit(board_bg, (0,0))
+			now = datetime.now()
+			hora = now.strftime("%H")
+
+			if hora < "20" and hora >="10" :
+				self.screen.blit(board_day_bg, (0,0))
+
+			else :
+				self.screen.blit(board_night_bg, (0,0))
+
 
 			# Draw remaining ducks on display
 			self.screen.blit(self.current_hits_img, (240, 465))
@@ -88,16 +97,30 @@ class Board :
 
 			pygame.display.update()
 
+	def shots_counter(self) :
+
+		# Check remaining shots
+
+		if self.shots > 0 :
+			self.shots -=1
+
+			if self.shots == 0 :
+				if self.current_round < 10 :
+					self.shots = 3
+					self.current_round +=1
+
+			self.current_shots_img = self.remaining_shots_img[self.shots]
+
+		
+
 
 	def check_ducks_impact(self, mouse) :
 
 		if self.screen_rect.collidepoint(mouse) :
 			gun_shot.play()
-
-
+			self.shots_counter()
+			
 	#def flying_ducks (self) :
-
-
 
 
 	def board_controller(self) :

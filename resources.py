@@ -154,7 +154,11 @@ round = pygame.transform.scale(pygame.image.load(os.path.join('Assets/dialog', "
 
 
 # Board
-board_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background.png")), (858, 540)) 
+board_day_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background_day.png")), (858, 540)) 
+board_day_blood_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background_day.png")), (858, 540)) 
+
+board_night_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background_night.png")), (858, 540)) 
+board_night_blood_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background_night.png")), (858, 540)) 
 
 # Hits
 hit_zero = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_zero.png")), (315, 35))
