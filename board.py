@@ -148,7 +148,7 @@ class Board :
 			self.shots -=1
 			self.current_shots_img = self.remaining_shots_img[self.shots]
 
-			if self.shots == 0:
+			if self.shots == 0 and self.isFalling:
 
 				if self.current_round < self.game_ducks :
 					self.current_round +=1
@@ -341,6 +341,17 @@ class Board :
 							if count == 0 : 
 								number = self.random_number()
 
+							if self.shots == 0 and not self.isFalling :
+								run = 0
+
+								while run < 3 :
+									self.duck_rect.y -=20
+									clock.tick(30)
+									run +=1
+
+								self.isFlying = False
+								self.refresh_remaining_shots()
+
 					while number % 2 == 1 and not self.isFalling:
 
 						# Choose duck assets pos
@@ -367,6 +378,17 @@ class Board :
 
 							if count == 0 : 
 								number = self.random_number()
+
+							if self.shots == 0 and not self.isFalling :
+								run = 0
+
+								while run < 3 :
+									self.duck_rect.y -=20
+									clock.tick(30)
+									run +=1
+
+								self.isFlying = False
+								self.refresh_remaining_shots()
 
 
 
