@@ -120,7 +120,7 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(jump_1, blue_up_1, dog_x, duck_x, duck_y, dog_jump)
+					self.draw(jump_1, blue_up_1_right, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(10)
 					dog_x += 10
 					duck_x = dog_x + 85
@@ -134,7 +134,7 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(jump_1, blue_up_2, dog_x, duck_x, duck_y, dog_jump)
+					self.draw(jump_1, blue_up_2_right, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(10)
 					dog_x += 10
 					duck_x = dog_x + 90
@@ -148,7 +148,7 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(jump_1, blue_up_1, dog_x, duck_x, duck_y, dog_jump)
+					self.draw(jump_1, blue_up_1_right, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(30)
 					dog_x += 10
 					duck_x = dog_x + 95
@@ -162,7 +162,7 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(jump_1, blue_up_2, dog_x, duck_x, duck_y, dog_jump)
+					self.draw(jump_1, blue_up_2_right, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(30)
 					dog_x += 10
 					duck_x = dog_x + 100
@@ -176,7 +176,7 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(jump_2, blue_up_2, dog_x, duck_x, duck_y, dog_jump)
+					self.draw(jump_2, blue_up_2_right, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(30)
 					dog_x += 10
 					duck_x = dog_x + 105
@@ -190,7 +190,7 @@ class Main :
 
 				if self.press_to_start :
 
-					self.draw(jump_2, blue_up_2, dog_x, duck_x, duck_y, dog_jump)
+					self.draw(jump_2, blue_up_3_right, dog_x, duck_x, duck_y, dog_jump)
 					self.clock.tick(30)
 					dog_x += 10
 					duck_x = dog_x + 110
