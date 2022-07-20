@@ -67,6 +67,8 @@ class Board :
 		self.green_duck_flying_left = [green_up_1_left, green_up_2_left, green_up_3_left]
 
 		self.eureka = False
+		self.laugh_reaction = [laughs_1, laughs_2]
+		self.dog_laughs = False
 
 
 	def draw_board(self) :
@@ -134,6 +136,10 @@ class Board :
 			if self.eureka :
 				self.screen.blit(one_duck, (self.duck_rect.x , self.duck_rect.y))
 
+			# Draw laughs
+			if self.dog_laughs :
+				self.screen.blit(self.current_dog_animation, (300 , 300))
+
 			# Game based mouse
 			pygame.mouse.set_visible(False)
 			self.screen.blit(cursor, ( pygame.mouse.get_pos() ))
@@ -175,8 +181,9 @@ class Board :
 			self.shots_counter()
 
 		if self.duck_rect.collidepoint(mouse) :
-			self.isFalling = True
-			self.shots_counter()
+			if self.shots >= 0:
+				self.isFalling = True
+				self.shots_counter()
 
 
 	def shot_duck_update(self) :
@@ -296,6 +303,17 @@ class Board :
 
 		return number
 
+	def laugh_animation(self) :
+		laughs = 0
+		self.dog_laughs = True
+		laughs_sound.play()
+
+		while laughs < 30 :
+			for laugh in self.laugh_reaction:
+				self.current_dog_animation = laugh
+				clock.tick(15)
+				laughs +=1
+
 	def duck_movement(self) :
 
 		if self.isFlying :
@@ -349,6 +367,9 @@ class Board :
 									clock.tick(30)
 									run +=1
 
+								self.laugh_animation()
+
+								self.dog_laughs = False
 								self.isFlying = False
 								self.refresh_remaining_shots()
 
@@ -387,6 +408,9 @@ class Board :
 									clock.tick(30)
 									run +=1
 
+								self.laugh_animation()
+
+								self.dog_laughs = False
 								self.isFlying = False
 								self.refresh_remaining_shots()
 
