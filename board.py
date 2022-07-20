@@ -36,7 +36,7 @@ class Board :
 
 
 		self.current_round = 1
-		self.ducks_available = ["blue", "blue", "blue"]
+		self.ducks_available = ["blue", "green", "brown"]
 
 		self.current_score = 000000
 
@@ -57,7 +57,14 @@ class Board :
 		self.blue_duck_falling = [blue_falling_1, blue_falling_2, blue_falling_3, blue_falling_4]
 		self.green_duck_falling = [green_falling_1, green_falling_2, green_falling_3, green_falling_4]
 
-		self.blue_duck_flying = [blue_up_1, blue_up_2, blue_up_3]
+		self.blue_duck_flying_right = [blue_up_1_right, blue_up_2_right, blue_up_3_right]
+		self.blue_duck_flying_left = [blue_up_1_left, blue_up_2_left, blue_up_3_left]
+
+		self.brown_duck_flying_right = [brown_up_1_right, brown_up_2_right, brown_up_3_right]
+		self.brown_duck_flying_left = [brown_up_1_left, brown_up_2_left, brown_up_3_left]
+
+		self.green_duck_flying_right = [green_up_1_right, green_up_2_right, green_up_3_right]
+		self.green_duck_flying_left = [green_up_1_left, green_up_2_left, green_up_3_left]
 
 		self.eureka = False
 
@@ -141,10 +148,10 @@ class Board :
 			self.shots -=1
 			self.current_shots_img = self.remaining_shots_img[self.shots]
 
-			if self.shots == 0 :
+			if self.shots == 0:
+
 				if self.current_round < self.game_ducks :
 					self.current_round +=1
-					self.refresh_remaining_shots()
 
 
 	def refresh_remaining_ducks(self) :
@@ -169,7 +176,7 @@ class Board :
 
 		if self.duck_rect.collidepoint(mouse) :
 			self.isFalling = True
-			self.shot_duck_update()
+			self.shots_counter()
 
 
 	def shot_duck_update(self) :
@@ -215,13 +222,13 @@ class Board :
 			# Assign duck sprite
 
 			if choose_duck == "blue" :
-				self.current_duck_img = blue_up_1
+				self.current_duck_img = blue_up_1_left
 
 			elif choose_duck == "green" :
-				self.current_duck_img = green_up_1
+				self.current_duck_img = green_up_1_left
 
 			elif choose_duck == "brown" :
-				self.current_duck_img = brown_up_1
+				self.current_duck_img = brown_up_1_left
 
 			# Generate random initial location
 			self.location = self.random_duck_location()
@@ -248,6 +255,47 @@ class Board :
 
 		self.is_free = False
 
+
+	def choose_flying_duck(self, pos) :
+
+		# Empty array
+
+		duck = []
+
+		if self.current_duck_color == "blue" :
+
+			if pos == "left":
+				duck = self.blue_duck_flying_left
+
+			else :
+				duck = self.blue_duck_flying_right
+
+
+		elif self.current_duck_color == "green" :
+
+			if pos == "left":
+				duck = self.green_duck_flying_left
+
+			else :
+				duck = self.green_duck_flying_right
+
+
+		elif self.current_duck_color == "brown" :
+
+			if pos == "left":
+				duck = self.brown_duck_flying_left
+
+			else :
+				duck = self.brown_duck_flying_right
+
+		return duck
+
+	def random_number(self) :
+
+		number = random.randint(0, 99)
+
+		return number
+
 	def duck_movement(self) :
 
 		if self.isFlying :
@@ -255,28 +303,107 @@ class Board :
 			# Normal movement
 			self.duck_rect.x = self.location
 			self.duck_rect.y = 300
+			
 
-			if self.shots > 0   :	
+			if self.shots >= 0   :	
 				while self.duck_rect.y > 0 and not self.isFalling :
-					for duck in self.blue_duck_flying :
-						self.current_duck_img = duck
-						self.duck_rect.y -= 5
-						self.clock.tick(20)
+					count = 0
 
-				if self.isFalling :
-					self.shot_animation()
-					clock.tick(5)
-					self.falling_animation()
-					self.eureka_time()
-					self.refresh_remaining_shots()
+					if count == 0 : 
+						number = self.random_number()
 
-			if self.shots == 0 and not self.isFalling:
-				while self.duck_rect.y > -100 :
-					for duck in self.blue_duck_flying :
-						self.current_duck_img = duck
-						self.duck_rect.y -= 15
-						self.clock.tick(60)
+					if count == 10 :
+						count = 0
 
+					while number % 2 == 0 and not self.isFalling :
+						# Choose duck assets pos
+						duck_assets = self.choose_flying_duck("right")
+
+						# Iterate with the new assets
+						for ducks in duck_assets :
+
+							# Assign the duck asset
+							self.current_duck_img = ducks
+
+							# Move the duck to the right
+							self.duck_rect.y -= 5
+							self.duck_rect.x += 5
+							clock.tick(20)
+
+							# Increase the counter
+							count +=1
+
+							# Check if the number is valid for this pos
+
+							if count == 10 :
+								count = 0
+
+							if count == 0 : 
+								number = self.random_number()
+
+					while number % 2 == 1 and not self.isFalling:
+
+						# Choose duck assets pos
+						duck_assets = self.choose_flying_duck("left")
+
+						# Iterate with the new assets
+						for ducks in duck_assets :
+
+							# Assign the duck asset
+							self.current_duck_img = ducks
+
+							# Move the duck to the right
+							self.duck_rect.y -= 5
+							self.duck_rect.x -= 5
+							clock.tick(20)
+
+							# Increase the counter
+							count +=1
+
+							# Check if the number is valid for this pos
+
+							if count == 10 :
+								count = 0
+
+							if count == 0 : 
+								number = self.random_number()
+
+
+
+				if self.duck_rect.y == 0 and not self.isFalling:
+					while self.duck_rect.y < 300 and not self.isFalling :
+						count = 0
+						for duck in duck_assets :
+
+							if count == 10 :
+								count = 0
+
+							if count == 0 : 
+								number = self.random_number()
+
+							self.current_duck_img = duck
+							self.duck_rect.y += 5
+
+							if number % 2 == 0 :
+								self.duck_rect.x -= 5
+								clock.tick(20)
+
+							else :
+								self.duck_rect.x += 5
+								self.clock.tick(20)
+
+							count +=1
+
+				if self.shots == 0 and not self.isFalling:
+					self.isFlying = False
+
+		if self.isFalling :
+			self.shot_animation()
+			clock.tick(5)
+			self.falling_animation()
+			self.eureka_time()
+			self.refresh_remaining_shots()
+			self.shot_duck_update()
 
 	def eureka_time(self) :
 		self.eureka = True
