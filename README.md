@@ -1,4 +1,4 @@
-<img src = "assets/logo/logo.png">  <br/>
+<img src = "assets/logo/logo.png" height="120" width="120">  <br/>
 
 The classic NES game made with Python programming language + Pygame framework
 
