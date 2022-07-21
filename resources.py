@@ -166,6 +166,7 @@ falling = pygame.mixer.Sound("assets/music/falling.ogg")
 lands = pygame.mixer.Sound("assets/music/lands.ogg")
 show = pygame.mixer.Sound("assets/music/show.ogg")
 laughs_sound = pygame.mixer.Sound("assets/music/laughs.ogg")
+clear = pygame.mixer.Sound("assets/music/clear.ogg")
 
 
 # Modes windows
@@ -179,7 +180,6 @@ dialog = pygame.transform.scale(pygame.image.load(os.path.join('Assets/dialog', 
 
 # Round
 round = pygame.transform.scale(pygame.image.load(os.path.join('Assets/dialog', "round.png")), (328, 138))
-
 
 # Board
 board_day_bg = pygame.transform.scale(pygame.image.load(os.path.join('assets/background/main_game', "background_day.png")), (858, 540)) 

@@ -32,6 +32,7 @@ class Board :
 		self.game_ducks = 10 # Max number on ducks in one round
 		self.shot_ducks = 0 # Fall ducks // Index of self.hits_img_list
 		self.hits_img_list = [hit_zero, hit_one, hit_two, hit_three, hit_four, hit_five, hit_six, hit_seven, hit_eight, hit_nine, hit_ten]
+		self.hits_winner_list = [hit_zero, hit_ten]
 		self.current_hits_img = self.hits_img_list[self.shot_ducks] # Current img at given index
 
 
@@ -154,10 +155,56 @@ class Board :
 			self.shots -=1
 			self.current_shots_img = self.remaining_shots_img[self.shots]
 
-			if self.shots == 0 and self.isFalling:
 
-				if self.current_round < self.game_ducks :
-					self.current_round +=1
+	def winner_screen(self) :
+
+		winner_anim = 0
+		clear.play()
+
+		while winner_anim < 10 :
+
+			# Draw new winner screen
+			for anim in self.hits_winner_list :
+				self.current_hits_img = anim
+				clock.tick(15)
+				winner_anim +=1
+
+
+	def reboot_game(self) :
+
+		# Draw winner screen
+		self.winner_screen()
+
+		# Game needs to be reset after 10 ducks fall
+
+		# Restore all ducks
+		self.game_ducks = 10
+		self.shot_ducks = 0
+		self.current_hits_img = self.hits_img_list[self.shot_ducks]
+
+		# Restore all shots
+		self.refresh_remaining_shots()
+
+		# Show next round animation
+		self.draw_round_anim()
+		
+
+	def draw_round_anim(self) :
+
+		# Increase round
+		self.current_round +=1
+
+		# Draws next round anim
+		self.round_animation = True
+		count_animation = 0
+
+		while count_animation < 20 :
+
+			count_animation +=1
+			clock.tick(20)
+
+			if count_animation == 20  :
+				self.round_animation = False
 
 
 	def refresh_remaining_ducks(self) :
@@ -176,12 +223,13 @@ class Board :
 
 	def check_ducks_impact(self, mouse) :
 
-		if self.screen_rect.collidepoint(mouse) :
+		if self.screen_rect.collidepoint(mouse) and not self.duck_rect.collidepoint(mouse) :
 			gun_shot.play()
 			self.shots_counter()
 
 		if self.duck_rect.collidepoint(mouse) :
 			if self.shots >= 0:
+				gun_shot.play()
 				self.isFalling = True
 				self.shots_counter()
 
@@ -311,8 +359,126 @@ class Board :
 		while laughs < 30 :
 			for laugh in self.laugh_reaction:
 				self.current_dog_animation = laugh
-				clock.tick(15)
+				clock.tick(20)
 				laughs +=1
+
+	def duck_fly_movement(self, number, pos, count) :
+
+		while number % 2 == 0 and not self.isFalling :
+			# Choose duck assets pos
+			duck_assets = self.choose_flying_duck("right")
+
+			# Iterate with the new assets
+			for ducks in duck_assets :
+
+				# Assign the duck asset
+				self.current_duck_img = ducks
+
+				# Move the duck to the right
+
+				# Y movement
+
+				if pos == "up" :
+					self.duck_rect.y -= 5
+
+				else :
+					self.duck_rect.y += 5
+
+				# X movement
+
+				if pos == "right" :
+					self.duck_rect.x += 5
+
+				elif pos == "left" :
+					self.duck_rect.x -= 5
+
+				else :
+					self.duck_rect.x += 5
+
+				clock.tick(20)
+
+				# Increase the counter
+				count +=1
+
+				# Check if the number is valid for this pos
+
+				if count == 10 :
+					count = 0
+
+				if count == 0 : 
+					number = self.random_number()
+
+				if self.shots == 0 and not self.isFalling :
+					run = 0
+
+					while run < 3 :
+						self.duck_rect.y -=20
+						clock.tick(30)
+						run +=1
+
+					self.laugh_animation()
+
+					self.dog_laughs = False
+					self.isFlying = False
+					self.refresh_remaining_shots()
+
+		while number % 2 == 1 and not self.isFalling:
+
+			# Choose duck assets pos
+			duck_assets = self.choose_flying_duck("left")
+
+			# Iterate with the new assets
+			for ducks in duck_assets :
+
+				# Assign the duck asset
+				self.current_duck_img = ducks
+
+				# Y movement
+				if pos == "up" :
+					self.duck_rect.y -= 5
+
+				else :
+					self.duck_rect.y += 5
+
+				# X movement
+
+				if pos == "right" :
+					self.duck_rect.x += 5
+
+				elif pos == "left" :
+					self.duck_rect.x -= 5
+
+				else :
+					self.duck_rect.x -= 5
+
+				clock.tick(20)
+
+				# Increase the counter
+				count +=1
+
+				# Check if the number is valid for this pos
+
+				if count == 10 :
+					count = 0
+
+				if count == 0 : 
+					number = self.random_number()
+
+				if self.shots == 0 and not self.isFalling :
+					run = 0
+
+					while run < 3 :
+						self.duck_rect.y -=20
+						clock.tick(30)
+						run +=1
+
+					self.laugh_animation()
+
+					self.dog_laughs = False
+					self.isFlying = False
+					self.refresh_remaining_shots()
+
+
 
 	def duck_movement(self) :
 
@@ -324,121 +490,46 @@ class Board :
 			
 
 			if self.shots >= 0   :	
-				while self.duck_rect.y > 0 and not self.isFalling :
+				if self.duck_rect.y >= 300 and not self.isFalling :
+
 					count = 0
 
-					if count == 0 : 
+					while self.duck_rect.y > 50 and self.duck_rect.x > 50 and self.duck_rect.x < 800 and not self.isFalling :
+
 						number = self.random_number()
 
-					if count == 10 :
-						count = 0
-
-					while number % 2 == 0 and not self.isFalling :
-						# Choose duck assets pos
-						duck_assets = self.choose_flying_duck("right")
-
-						# Iterate with the new assets
-						for ducks in duck_assets :
-
-							# Assign the duck asset
-							self.current_duck_img = ducks
-
-							# Move the duck to the right
-							self.duck_rect.y -= 5
-							self.duck_rect.x += 5
-							clock.tick(20)
-
-							# Increase the counter
-							count +=1
-
-							# Check if the number is valid for this pos
-
-							if count == 10 :
-								count = 0
-
-							if count == 0 : 
-								number = self.random_number()
-
-							if self.shots == 0 and not self.isFalling :
-								run = 0
-
-								while run < 3 :
-									self.duck_rect.y -=20
-									clock.tick(30)
-									run +=1
-
-								self.laugh_animation()
-
-								self.dog_laughs = False
-								self.isFlying = False
-								self.refresh_remaining_shots()
-
-					while number % 2 == 1 and not self.isFalling:
-
-						# Choose duck assets pos
-						duck_assets = self.choose_flying_duck("left")
-
-						# Iterate with the new assets
-						for ducks in duck_assets :
-
-							# Assign the duck asset
-							self.current_duck_img = ducks
-
-							# Move the duck to the right
-							self.duck_rect.y -= 5
-							self.duck_rect.x -= 5
-							clock.tick(20)
-
-							# Increase the counter
-							count +=1
-
-							# Check if the number is valid for this pos
-
-							if count == 10 :
-								count = 0
-
-							if count == 0 : 
-								number = self.random_number()
-
-							if self.shots == 0 and not self.isFalling :
-								run = 0
-
-								while run < 3 :
-									self.duck_rect.y -=20
-									clock.tick(30)
-									run +=1
-
-								self.laugh_animation()
-
-								self.dog_laughs = False
-								self.isFlying = False
-								self.refresh_remaining_shots()
+						self.duck_fly_movement(number, "up", count)
 
 
+				if self.duck_rect.y <= 50 and not self.isFalling:
 
-				if self.duck_rect.y == 0 and not self.isFalling:
-					while self.duck_rect.y < 300 and not self.isFalling :
-						count = 0
-						for duck in duck_assets :
+					count = 0
 
-							if count == 10 :
-								count = 0
+					while self.duck_rect.y < 300 and self.duck_rect.x > 50 and self.duck_rect.x < 800 and not self.isFalling :
 
-							if count == 0 : 
-								number = self.random_number()
+						number = self.random_number()
 
-							self.current_duck_img = duck
-							self.duck_rect.y += 5
+						self.duck_fly_movement(number, "down", count)
 
-							if number % 2 == 0 :
-								self.duck_rect.x -= 5
-								clock.tick(20)
+				if self.duck_rect.x <= 50  and not self.isFalling :
 
-							else :
-								self.duck_rect.x += 5
-								self.clock.tick(20)
+					count = 0
 
-							count +=1
+					while self.duck_rect.y < 300  and self.duck_rect.y > 50 and self.duck_rect.x < 800 and not self.isFalling :
+
+						number = self.random_number()
+
+						self.duck_fly_movement(number, "right", count)
+
+				if self.duck_rect.x >= 800 and not self.isFalling :
+
+					count = 0
+
+					while self.duck_rect.y < 300 and self.duck_rect.y > 50 and self.duck_rect.x > 50 and not self.isFalling :
+
+						number = self.random_number()
+
+						self.duck_fly_movement(number, "left", count)
 
 				if self.shots == 0 and not self.isFalling:
 					self.isFlying = False
@@ -450,6 +541,12 @@ class Board :
 			self.eureka_time()
 			self.refresh_remaining_shots()
 			self.shot_duck_update()
+
+			# Check if the list of ducks is full
+
+			if self.shot_ducks == 10 :
+				self.reboot_game()
+				
 
 	def eureka_time(self) :
 		self.eureka = True

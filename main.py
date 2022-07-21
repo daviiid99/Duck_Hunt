@@ -222,10 +222,7 @@ class Main :
 
 			for event in pygame.event.get() :
 				if event.type == pygame.QUIT :
-					self.running = False
 					self.press_to_start = False
-					pygame.quit()
-					
 
 				elif event.type == pygame.MOUSEBUTTONDOWN :
 					self.check_mouse(event.pos)
@@ -262,6 +259,8 @@ class Main :
 			thread_1.join()
 			thread_2.join()
 			thread_3.join()
+
+		pygame.quit()
 
 
 
