@@ -190,16 +190,16 @@ board_night_blood_bg = pygame.transform.scale(pygame.image.load(os.path.join('as
 
 # Hits
 hit_zero = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_zero.png")), (315, 35))
-hit_one = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_one.png")), (315, 35))
-hit_two = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_two.png")), (315, 35))
-hit_three = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_three.png")), (315, 35))
-hit_four = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_four.png")), (315, 35))
-hit_five = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_five.png")), (315, 35))
-hit_six = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_six.png")), (315, 35))
-hit_seven = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_seven.png")), (315, 35))
-hit_eight = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_eight.png")), (315, 35))
-hit_nine = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_nine.png")), (315, 35))
-hit_ten =  pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_ten.png")), (315, 35))
+hit_one = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_one.png")), (22, 17))
+hit_two = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_two.png")), (22, 17))
+hit_three = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_three.png")), (22, 17))
+hit_four = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_four.png")), (22, 17))
+hit_five = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_five.png")), (22, 17))
+hit_six = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_six.png")), (22, 17))
+hit_seven = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_seven.png")), (22, 17))
+hit_eight = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_eight.png")), (22, 17))
+hit_nine = pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_nine.png")), (22, 17))
+hit_ten =  pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/hits', "hit_ten.png")), (22, 17))
 
 # Shots
 all_shots =  pygame.transform.scale(pygame.image.load(os.path.join('assets/dialog/shots', "all_shots.png")), (52, 34))

@@ -31,9 +31,24 @@ class Board :
 
 		self.game_ducks = 10 # Max number on ducks in one round
 		self.shot_ducks = 0 # Fall ducks // Index of self.hits_img_list
-		self.hits_img_list = [hit_zero, hit_one, hit_two, hit_three, hit_four, hit_five, hit_six, hit_seven, hit_eight, hit_nine, hit_ten]
+		self.ducks_index = 0
+		self.hits_img_list = [hit_one, hit_two, hit_three, hit_four, hit_five, hit_six, hit_seven, hit_eight, hit_nine, hit_ten]
+		self.hits_list = []
 		self.hits_winner_list = [hit_zero, hit_ten]
-		self.current_hits_img = self.hits_img_list[self.shot_ducks] # Current img at given index
+		self.current_hits_img = self.hits_img_list[self.ducks_index] # Current img at given index
+		self.coords = {
+					  hit_one : {},
+					  hit_two : {},
+					  hit_three : {},
+					  hit_four : {},
+					  hit_five : {},
+					  hit_six : {},
+					  hit_seven : {},
+					  hit_eight : {},
+					  hit_nine : {},
+					  hit_ten : {}
+
+					  }
 
 
 		self.current_round = 1
@@ -48,11 +63,14 @@ class Board :
 		self.current_vel_y = 0
 
 		self.current_duck_color = ""
+		self.currrent_duck_score = 0
 
 		self.isFlying = False
 		self.location = 0
 		self.isFalling = False
 		self.is_free = False
+		self.falling_x = 0
+		self.falling_y = 0
 
 		self.brown_duck_falling = [brown_falling_1, brown_falling_2, brown_falling_3, brown_falling_4]
 		self.blue_duck_falling = [blue_falling_1, blue_falling_2, blue_falling_3, blue_falling_4]
@@ -70,6 +88,18 @@ class Board :
 		self.eureka = False
 		self.laugh_reaction = [laughs_1, laughs_2]
 		self.dog_laughs = False
+
+	def set_coords(self) :
+
+		pos = 280
+
+		for duck in self.hits_img_list :
+			if duck in self.hits_list :
+				self.coords[duck] = pos
+				pos +=25
+
+			else :
+				pos +=42
 
 
 	def draw_board(self) :
@@ -96,7 +126,20 @@ class Board :
 
 
 			# Draw remaining ducks on display
-			self.screen.blit(self.current_hits_img, (240, 465))
+			self.screen.blit(hit_zero, (240, 465))
+
+			count = 0
+			self.set_coords()
+			
+
+			for duck in self.hits_img_list :
+
+				for duck in self.hits_list :
+
+					self.screen.blit(duck, (self.coords[duck], 470))
+					count +=1
+
+
 
 			# Draw remaining shots on display
 			self.screen.blit(self.current_shots_img, (95, 468))
@@ -132,6 +175,11 @@ class Board :
 
 			if self.isFlying :
 				self.screen.blit(self.current_duck_img, (self.duck_rect.x, self.duck_rect.y))
+
+			# Draw new score
+			if self.isFalling :
+				text = small_font.render(str(self.currrent_duck_score), 1, WHITE)
+				self.screen.blit(text, (self.falling_x, self.falling_y))
 
 			# Draw capture
 			if self.eureka :
@@ -180,7 +228,8 @@ class Board :
 		# Restore all ducks
 		self.game_ducks = 10
 		self.shot_ducks = 0
-		self.current_hits_img = self.hits_img_list[self.shot_ducks]
+		self.ducks_index = 0
+		self.current_hits_img = self.hits_img_list[self.ducks_index]
 
 		# Restore all shots
 		self.refresh_remaining_shots()
@@ -211,7 +260,9 @@ class Board :
 
 		# Just Increasing the variable doesn't seem to work properly
 		self.shot_ducks +=1
-		self.current_hits_img = self.hits_img_list[self.shot_ducks] 
+		self.ducks_index +=1
+		self.current_hits_img = self.hits_img_list[self.ducks_index] 
+		self.hits_list.append(self.current_hits_img)
 
 
 	def refresh_remaining_shots(self) :
@@ -230,8 +281,29 @@ class Board :
 		if self.duck_rect.collidepoint(mouse) :
 			if self.shots >= 0:
 				gun_shot.play()
+				self.falling_coords()
 				self.isFalling = True
 				self.shots_counter()
+
+
+
+	def falling_coords(self) :
+
+		# Save shoot coords into variable
+		self.falling_x = self.duck_rect.x
+		self.falling_y = self.duck_rect.y
+
+		# Check duck type and score
+		self.check_duck_value()
+
+
+	def check_duck_value(self) :
+
+		if "blue" in self.current_duck_color :
+			self.currrent_duck_score = 1000
+
+		else :
+			self.currrent_duck_score = 1500
 
 
 	def shot_duck_update(self) :
@@ -544,7 +616,7 @@ class Board :
 
 			# Check if the list of ducks is full
 
-			if self.shot_ducks == 10 :
+			if self.game_ducks == 0 :
 				self.reboot_game()
 				
 
